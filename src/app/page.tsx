@@ -103,7 +103,6 @@ export default async function Home() {
       <HomeBanner />
 
       <ProductGrid products={productBoxes} />
-      <ProductGrid products={productBoxes} />
     </main>
   );
 }
