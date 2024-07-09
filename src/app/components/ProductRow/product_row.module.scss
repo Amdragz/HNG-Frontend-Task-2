@@ -1,0 +1,23 @@
+.product_row {
+    width: 100%;
+    max-width: 1217px;
+    padding-top: 32px;
+    margin: 0 auto;
+}
+
+.product_row_flex {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    justify-content: space-between;
+}
+
+.product_item {
+    flex: 0 0 auto;
+    width: 280px;
+    border-radius: 24px;
+
+    // &:not(:last-child) {
+    //     margin-right: 32px;
+    // }
+}

@@ -1,0 +1,23 @@
+.product_grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px; // Adjust the gap between the items as needed
+    justify-content: center;
+
+    // @media (max-width: 798px) {
+    //     width: 199.8px;
+    //     height: 210px;
+    // }
+}
+
+.product_item {
+    flex: 1 1 280px;
+    max-width: 280px;
+    min-width: 240px;
+    margin-bottom: 32px;
+
+    // @media (max-width: 798px) {
+    //     width: 199.8px;
+    //     height: 210px;
+    // }
+}

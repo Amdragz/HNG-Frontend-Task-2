@@ -1,0 +1,299 @@
+{
+  "info": {
+    "name": "Catalog - Stage Two",
+    "description": "API endpoints for the Catalog project",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseURL",
+      "value": "http://localhost:3000/api"
+    },
+    {
+      "key": "accessToken",
+      "value": ""
+    }
+  ],
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Register",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseURL}}/auth/register",
+            "body": {
+              "mode": "raw",
+              "raw": "{\"name\": \"John Doe\", \"email\": \"john.doe@example.com\", \"password\": \"password123\"}"
+            }
+          }
+        },
+        {
+          "name": "Login",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseURL}}/auth/login",
+            "body": {
+              "mode": "raw",
+              "raw": "{\"email\": \"john.doe@example.com\", \"password\": \"password123\"}"
+            }
+          }
+        },
+        {
+          "name": "User",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}"
+              }
+            ],
+            "url": "{{baseURL}}/user"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Products",
+      "item": [
+        {
+          "name": "Get All Products",
+          "request": {
+            "method": "GET",
+            "url": "{{baseURL}}/products"
+          }
+        },
+        {
+          "name": "Product",
+          "item": [
+            {
+              "name": "Get Product",
+              "request": {
+                "method": "GET",
+                "url": "{{baseURL}}/products/{{productId}}"
+              }
+            },
+            {
+              "name": "Review Product",
+              "request": {
+                "method": "POST",
+                "url": "{{baseURL}}/products/{{productId}}/reviews",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\"stars\": 5.0 \"comment\": \"Short description\"}"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "Create Product",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}"
+              }
+            ],
+            "url": "{{baseURL}}/products",
+            "body": {
+              "mode": "raw",
+              "raw": "{\"name\": \"New Product\", \"shortDescription\": \"Short description\", \"description\": \"<p>HTML content</p>\", \"price\": 100, \"category\": \"Category\", \"options\": [{\"name\": \"Size\", \"values\": [{\"name\": \"Small\", \"additionalPrice\": 0}, {\"name\": \"Large\", \"additionalPrice\": 10}], \"required\": true}], \"images\": [\"image1.jpg\", \"image2.jpg\"]}"
+            }
+          }
+        },
+        {
+          "name": "Update Product",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}"
+              }
+            ],
+            "url": "{{baseURL}}/products/{{productId}}",
+            "body": {
+              "mode": "raw",
+              "raw": "{\"name\": \"Updated Product\", \"shortDescription\": \"Updated short description\", \"description\": \"<p>Updated HTML content</p>\", \"price\": 150, \"category\": \"Updated Category\", \"options\": [{\"name\": \"Size\", \"values\": [{\"name\": \"Small\", \"additionalPrice\": 0}, {\"name\": \"Large\", \"additionalPrice\": 10}], \"required\": true}], \"images\": [\"image1.jpg\", \"image2.jpg\"]}"
+            }
+          }
+        },
+        {
+          "name": "Delete Product",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}"
+              }
+            ],
+            "url": "{{baseURL}}/products/{{productId}}"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Blogs",
+      "item": [
+        {
+          "name": "Get All Blogs",
+          "request": {
+            "method": "GET",
+            "url": "{{baseURL}}/blogs"
+          }
+        },
+        {
+          "name": "Get Blog",
+          "request": {
+            "method": "GET",
+            "url": "{{baseURL}}/blogs/{{blogId}}"
+          }
+        },
+        {
+          "name": "Create Blog",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}"
+              }
+            ],
+            "url": "{{baseURL}}/blogs",
+            "body": {
+              "mode": "raw",
+              "raw": "{\"title\": \"New Blog\", \"content\": \"Blog content\", \"category\": \"Category\"}"
+            }
+          }
+        },
+        {
+          "name": "Update Blog",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}"
+              }
+            ],
+            "url": "{{baseURL}}/blogs/{{blogId}}",
+            "body": {
+              "mode": "raw",
+              "raw": "{\"title\": \"Updated Blog\", \"content\": \"Updated blog content\", \"category\": \"Updated Category\"}"
+            }
+          }
+        },
+        {
+          "name": "Delete Blog",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}"
+              }
+            ],
+            "url": "{{baseURL}}/blogs/{{blogId}}"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Cart",
+      "item": [
+        {
+          "name": "Get Cart",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}"
+              }
+            ],
+            "url": "{{baseURL}}/cart"
+          }
+        },
+        {
+          "name": "Add to Cart",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}"
+              }
+            ],
+            "url": "{{baseURL}}/cart",
+            "body": {
+              "mode": "raw",
+              "raw": "{\"productId\": \"{{productId}}\", \"quantity\": 1, \"options\": [{\"name\": \"Size\", \"value\": \"Large\"}]}"
+            }
+          }
+        },
+        {
+          "name": "Remove from Cart",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}"
+              }
+            ],
+            "url": "{{baseURL}}/cart",
+            "body": {
+              "mode": "raw",
+              "raw": "{\"productId\": \"{{productId}}\"}"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
